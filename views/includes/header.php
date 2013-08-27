@@ -7,7 +7,7 @@
     <title><?php echo isset($title) ? $title : 'Taggart' ?></title>
     <link rel="stylesheet" href="/html/stylesheets/foundation.min.css">
     <link rel="stylesheet" href="/html//stylesheets/app.css">
-    <script src="/html//javascripts/modernizr.foundation.js"></script>
+    <script src="/html/javascripts/modernizr.foundation.js"></script>
 </head>
 <body>
 
