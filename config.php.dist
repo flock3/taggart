@@ -1,0 +1,6 @@
+<?php
+
+return array(
+    'repositoryPath' => __DIR__ . '/repositories', // Path to the repo's on your system
+    'cacheDir' => __DIR__ . '/cache', // Path to the cache directory (if you're file caching)
+);
