@@ -1,0 +1,22 @@
+  _______                           _   
+ |__   __|                         | |  
+    | | __ _  __ _  __ _  __ _ _ __| |_ 
+    | |/ _` |/ _` |/ _` |/ _` | '__| __|
+    | | (_| | (_| | (_| | (_| | |  | |_ 
+    |_|\__,_|\__, |\__, |\__,_|_|   \__|
+              __/ | __/ |               
+             |___/ |___/                
+
+/* MAIN */
+  Developed by: Thomas Gray
+  Twitter: @topicus
+  Site: http://www.flock3.com
+  
+/* SPECIAL THANKS */
+  Name: Stewart Anderson
+  Twitter: @webdevstu
+  Why: For helping me with the frontend
+  
+  Name: RandomStorm Limited
+  Twitter: @RandomStorm
+  Why: For allowing me to release this as open source
