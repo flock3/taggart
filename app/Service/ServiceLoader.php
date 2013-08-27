@@ -15,9 +15,10 @@ class ServiceLoader
     /**
      * @param CacheInterface $cacheEngine
      */
-    public function __construct(CacheInterface $cacheEngine)
+    public function __construct(CacheInterface $cacheEngine, array $config)
     {
         $this->setCache($cacheEngine);
+        $this->setConfig($config);
     }
 
     /**
@@ -26,9 +27,14 @@ class ServiceLoader
     protected $cache;
 
     /**
+     * @var array $config
+     */
+    protected $config;
+
+    /**
      * @var array $services
      */
-    protected $services;
+    protected $services = array();
 
     /**
      * @param $serviceName
@@ -43,11 +49,31 @@ class ServiceLoader
 
         $service = new $serviceName; /* @var ServiceAbstract $service */
 
+        $service->setCache($this->getCache());
+        $service->setConfig($this->getConfig());
+
         $this->services[$serviceName] = $service;
 
         return $service;
     }
 
+    /**
+     * @param array $config
+     * @return $this
+     */
+    public function setConfig(array $config)
+    {
+        $this->config = $config;
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getConfig()
+    {
+        return $this->config;
+    }
 
     /**
      * @param CacheInterface $cache
