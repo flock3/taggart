@@ -1,0 +1,6 @@
+{
+    "require": {
+        "slim/slim": "2.*",
+	"usmanhalalit/pixie": "1.*@dev"
+    }
+}
