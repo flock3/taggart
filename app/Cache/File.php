@@ -9,9 +9,6 @@
 
 namespace Cache;
 
-
-use Service\CacheInterface;
-
 /**
  * Mad simple file cacher written in all of 10 minutes. Totally untested? No worries. I write code right the first time.
  * @package Cache

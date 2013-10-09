@@ -10,16 +10,24 @@
 namespace Service;
 
 
+use Database\QueryBuilderHandler;
+
 class ServiceLoader
 {
     /**
      * @param CacheInterface $cacheEngine
      */
-    public function __construct(CacheInterface $cacheEngine, array $config)
+    public function __construct(QueryBuilderHandler $databaseHandler, CacheInterface $cacheEngine, array $config)
     {
+        $this->setDatabaseHandler($databaseHandler);
         $this->setCache($cacheEngine);
         $this->setConfig($config);
     }
+
+    /**
+     * @var QueryBuilderHandler
+     */
+    protected $databaseHandler;
 
     /**
      * @var CacheInterface $cache
@@ -49,12 +57,43 @@ class ServiceLoader
 
         $service = new $serviceName; /* @var ServiceAbstract $service */
 
-        $service->setCache($this->getCache());
-        $service->setConfig($this->getConfig());
+        if($service instanceof ServiceAbstract)
+        {
+            $service->setCache($this->getCache());
+            $service->setConfig($this->getConfig());
+            $service->setDatabaseHandler($this->getDatabaseHandler());
+        }
 
         $this->services[$serviceName] = $service;
 
         return $service;
+    }
+
+    /**
+     * setDatabaseHandler sets the databaseHandler property in object storage
+     *
+     * @param \Database\QueryBuilderHandler $databaseHandler
+     * @throws \InvalidArgumentException
+     * @return ServiceLoader
+     */
+    public function setDatabaseHandler($databaseHandler)
+    {
+        if (empty($databaseHandler))
+        {
+            throw new \InvalidArgumentException(__METHOD__ . ' cannot accept an empty databaseHandler');
+        }
+        $this->databaseHandler = $databaseHandler;
+        return $this;
+    }
+
+    /**
+     * getDatabaseHandler returns the databaseHandler from the object
+     *
+     * @return \Database\QueryBuilderHandler
+     */
+    public function getDatabaseHandler()
+    {
+        return $this->databaseHandler;
     }
 
     /**

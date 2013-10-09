@@ -2,5 +2,5 @@
 
 $cacheEngine = new Cache\File($config['cacheDir']);
 
-$serviceLoader = new Service\ServiceLoader($cacheEngine, $config);
+$serviceLoader = new Service\ServiceLoader($databaseHandler, $cacheEngine, $config);
 

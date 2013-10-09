@@ -1,6 +1,8 @@
 <?php
 namespace Service;
 
+use Database\QueryBuilderHandler;
+
 class ServiceAbstract
 {
     /**
@@ -12,6 +14,11 @@ class ServiceAbstract
      * @var array $config
      */
     protected $config;
+
+    /**
+     * @var QueryBuilderHandler
+     */
+    protected $databaseHandler;
 
     /**
      * @param array $config
@@ -44,11 +51,38 @@ class ServiceAbstract
     /**
      * getCache returns the cache from the object
      *
-     * @return \Service\CacheInterface
+     * @return \Cache\CacheInterface
      */
     public function getCache()
     {
         return $this->cache;
+    }
+
+    /**
+     * setDatabaseHandler sets the databaseHandler property in object storage
+     *
+     * @param \Database\QueryBuilderHandler $databaseHandler
+     * @throws \InvalidArgumentException
+     * @return ServiceAbstract
+     */
+    public function setDatabaseHandler($databaseHandler)
+    {
+        if (empty($databaseHandler))
+        {
+            throw new \InvalidArgumentException(__METHOD__ . ' cannot accept an empty databaseHandler');
+        }
+        $this->databaseHandler = $databaseHandler;
+        return $this;
+    }
+
+    /**
+     * getDatabaseHandler returns the databaseHandler from the object
+     *
+     * @return \Database\QueryBuilderHandler
+     */
+    public function getDatabaseHandler()
+    {
+        return $this->databaseHandler;
     }
 
     public function getRepositoryPath()

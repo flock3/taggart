@@ -7,7 +7,7 @@
  * @subpackage 
  */
 
-namespace Service;
+namespace Cache;
 
 
 interface CacheInterface
