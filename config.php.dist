@@ -3,4 +3,13 @@
 return array(
     'repositoryPath' => __DIR__ . '/repositories', // Path to the repo's on your system
     'cacheDir' => __DIR__ . '/cache', // Path to the cache directory (if you're file caching)
+    'database' => array(
+        'driver'    => 'mysql', // MySQL by default
+        'host'      => 'localhost',
+        'database'  => 'taggart',
+        'username'  => 'root',
+        'password'  => '',
+        'charset'   => 'utf8', // Optional
+        'collation' => 'utf8_unicode_ci', // Optional
+    ),
 );
