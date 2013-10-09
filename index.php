@@ -1,8 +1,6 @@
 <?php
 
-require 'Slim/Slim.php';
-
-\Slim\Slim::registerAutoloader();
+require(__DIR__ . '/vendor/autoload.php');
 
 $app = new \Slim\Slim();
 $app->config('templates.path', realpath(__DIR__ . '/views'));
